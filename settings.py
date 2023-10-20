@@ -13,4 +13,7 @@ class Settings:
     game_width: int
     game_height: int
     cell_size: int
-    fps: int
+    unpaused_fps: int
+    paused: bool = False
+    current_fps: int = Constants.INITIAL_FPS
+    mouse_mode: bool = True  # Whether clicking a cell makes it alive or dead

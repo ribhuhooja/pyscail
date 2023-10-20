@@ -15,8 +15,7 @@ class Grid:
         self.width = width
         self.height = height
         self.cells = [
-            [Cell(random.choice([True, False])) for j in range(self.height)]
-            for i in range(self.width)
+            [Cell(False) for j in range(self.height)] for i in range(self.width)
         ]
 
     def step_grid(self):
@@ -40,6 +39,17 @@ class Grid:
                         new_cells[i][j].is_alive = True
 
         self.cells = new_cells
+
+    def clear(self):
+        for row in self.cells:
+            for cell in row:
+                cell.is_alive = False
+
+    def randomize(self):
+        self.cells = [
+            [Cell(random.choice([True, False])) for j in range(self.height)]
+            for i in range(self.width)
+        ]
 
 
 def _neighboringIndices(
