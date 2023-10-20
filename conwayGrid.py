@@ -1,3 +1,5 @@
+"""Provides Grid, a class that holds all the cells in the game of life"""
+
 from dataclasses import dataclass
 from typing import Tuple
 import random
@@ -9,16 +11,20 @@ class Cell:
 
 
 class Grid:
-    cells: list[list[Cell]]
-
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.cells = [
+        self.cells: list[list[Cell]] = [
             [Cell(False) for j in range(self.height)] for i in range(self.width)
         ]
 
     def step_grid(self):
+        """From the current generation of cells, produce the next one
+
+        For each alive cell in the grid, if it has 2 or 3 alive neighbors it remains alive.
+        Otherwise, it dies.
+        For each dead cell, if it has exactly 3 alive neighbors, it becomes alive. Otherwise, it remains dead.
+        """
         new_cells = [
             [Cell(self.cells[i][j].is_alive) for j in range(self.height)]
             for i in range(self.width)
@@ -41,34 +47,28 @@ class Grid:
         self.cells = new_cells
 
     def clear(self):
+        """Kills all the cells"""
         for row in self.cells:
             for cell in row:
                 cell.is_alive = False
 
     def randomize(self):
+        """Randomly sets each cell to either alive or dead"""
         self.cells = [
             [Cell(random.choice([True, False])) for j in range(self.height)]
             for i in range(self.width)
         ]
 
 
-def _neighboringIndices(
-    x: int, y: int, width: int, height: int
-) -> list[Tuple[int, int]]:
-    neighbors = []
-    for i in range(max(x - 1, 0), min(x + 2, width)):
-        for j in range(max(y - 1, 0), min(y + 2, height)):
-            neighbors.append((i, j))
-    neighbors.remove((x, y))
-    return neighbors
-
-
-# Wraps from the right edge to left and top edge to the bottom
-# Like a video game in which if you go off the edge you come back
-# on the other side
 def _neighboringIndicesWrap(
     x: int, y: int, width: int, height: int
 ) -> list[Tuple[int, int]]:
+    """Returns the indices of neighboring cells given the index of some cell
+
+    Wraps from the right edge to left and top edge to the bottom
+    like a video game in which if you go off the edge you come back
+    on the other side
+    """
     neighbors = []
     for i in range(x - 1, x + 2):
         for j in range(y - 1, y + 2):
