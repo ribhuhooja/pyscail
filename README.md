@@ -17,15 +17,8 @@ S - slow down
 M - toggle mouse mode, whether clicking a cell makes it alive or dead
 
 Mouse - Click on any cell to make it alive/dead. Drag the mouse while pressed to "draw" on the grid.
-Try drawing your name and see how it evolves! Or try drawing the very simple r-pentomino, and see its chaotic nature:
-
-XXXXX
-XX**X
-X**XX
-XX*XX
-XXXXX
-
-(The asterisks represent alive cells, the Xs dead ones)
+Try drawing your name and see how it evolves! Or try drawing any of the many, many patterns on LifeWiki, such as the very simple r-pentomino, and see their chaotic nature:
+https://conwaylife.com/wiki/R-pentomino
 
 **Important notes**
 The game starts out with no cells. To see the evolution, either press r for random generation, or draw something
@@ -36,3 +29,22 @@ Since the game starts out unpaused, to draw something and see its effects, press
 
 # Installation instructions
 You will need python and pygame to run this program.
+Installing python: https://www.python.org/downloads/
+Make sure to add it to path!
+
+Once you've done that, pip should be in path. In the command line, run
+```
+pip install pygame
+```
+
+Now, you can download the files! Probably the best way to do that is to clone the repository. 
+ONce you have all the files for the repository, `cd` to that directory, and run
+
+```
+python main.py
+```
+or
+```
+python3 main.py
+```
+(depending on your system)
