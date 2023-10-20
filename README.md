@@ -8,37 +8,37 @@ Think a video game in which if you go too far off the edge in one direction, you
 
 This also allows "drawing" on the screen by editing which cells are alive and dead
 
-Controls:
-Spacebar - toggle pause and unpause
-C - clear the screen i.e. kill all the cells
-R - randomize all the cells
-F - speed up
-S - slow down
-M - toggle mouse mode, whether clicking a cell makes it alive or dead
+Controls:  
+Spacebar - toggle pause and unpause  
+C - clear the screen i.e. kill all the cells  
+R - randomize all the cells  
+F - speed up  
+S - slow down  
+M - toggle mouse mode, whether clicking a cell makes it alive or dead  
 
 Mouse - Click on any cell to make it alive/dead. Drag the mouse while pressed to "draw" on the grid.
 Try drawing your name and see how it evolves! Or try drawing any of the many, many patterns on LifeWiki, such as the very simple r-pentomino, and see their chaotic nature:
 https://conwaylife.com/wiki/R-pentomino
 
-**Important notes**
-The game starts out with no cells. To see the evolution, either press r for random generation, or draw something
-Please only draw when paused, because otherwise the framerate might be too slow to have a satisfying drawing experience
+**Important notes**  
+The game starts out with no cells. To see the evolution, either press r for random generation, or draw something.  
+Please only draw when paused, because otherwise the framerate might be too slow to have a satisfying drawing experience  
 (The framerate is kept slow to see the generations evolve. You can speed it up if you want to)
 
 Since the game starts out unpaused, to draw something and see its effects, press space, draw, and then press space again
 
 # Installation instructions
-You will need python and pygame to run this program.
-Installing python: https://www.python.org/downloads/
-Make sure to add it to path!
+You will need python and pygame to run this program.  
+Installing python: https://www.python.org/downloads/  
+Make sure to add it to path!  
 
-Once you've done that, pip should be in path. In the command line, run
+Once you've done that, pip should be in path. In the command line, run  
 ```
 pip install pygame
 ```
 
-Now, you can download the files! Probably the best way to do that is to clone the repository. 
-ONce you have all the files for the repository, `cd` to that directory, and run
+Now, you can download the files! Probably the best way to do that is to clone the repository.   
+Once you have all the files for the repository, `cd` to that directory, and run  
 
 ```
 python main.py
