@@ -1,0 +1,3 @@
+Make the basic graphics work
+Make the text thing work
+Pull state upwards into a gameState object
