@@ -52,6 +52,4 @@ python3 main.py
 
 # Video Demo
 A video demo of the installation and running of the program:  
-<video width="320" height="240" controls>
-  <source src="video-demo.mov" type="video/mp4">
-</video>
+https://youtu.be/gbwE5QXcWP0
