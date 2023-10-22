@@ -1,4 +1,4 @@
-"""Actually executes all the code and calls upon all other modules"""
+"""Executes all the code and calls upon all other modules"""
 
 import pygame
 
