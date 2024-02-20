@@ -2,7 +2,7 @@
 
 import pygame
 
-from conwayGrid import Grid
+from grid import Grid
 from graphics import Graphics
 from settings import Settings, Constants
 
@@ -31,12 +31,8 @@ def handle_inputs(settings: Settings, grid: Grid):
                 else:
                     settings.current_fps = settings.unpaused_fps
                     settings.paused = False
-            elif event.key == pygame.K_m:
-                settings.mouse_mode = not settings.mouse_mode
-            elif event.key == pygame.K_c:
-                grid.clear()
             elif event.key == pygame.K_r:
-                grid.randomize()
+                grid.reset()
             elif event.key == pygame.K_f:
                 if settings.unpaused_fps < Constants.MAX_FPS:
                     settings.unpaused_fps *= 2
@@ -51,17 +47,7 @@ def handle_inputs(settings: Settings, grid: Grid):
                     if not settings.paused:
                         settings.current_fps = settings.unpaused_fps
 
-    # Now to handle the mouse
-    if pygame.mouse.get_pressed()[0]:  # If LMB is pressed
-        i, j = pygame.mouse.get_pos()
-
-        # To get the cell index, divide its position by the cell size
-        i //= settings.cell_size
-        j //= settings.cell_size
-
-        grid.cells[i][j].is_alive = settings.mouse_mode
-
-        return False
+    return False
 
 
 def mainLoop():
@@ -94,7 +80,7 @@ def mainLoop():
 def main():
     """Executes all the code"""
     pygame.init()
-    pygame.display.set_caption("Game of Life")
+    pygame.display.set_caption("Mandelbrot set")
     mainLoop()
     pygame.quit()
 

@@ -2,8 +2,8 @@
 
 import pygame
 
-from conwayGrid import Grid
-from settings import Settings
+from grid import Grid
+from settings import Settings, Constants
 
 
 class Graphics:
@@ -24,20 +24,19 @@ class Graphics:
         self.__screen.fill((0, 0, 0))
         for i in range(grid.width):
             for j in range(grid.height):
-                self.__render_cell(i, j, grid.cells[i][j].is_alive)
+                self.__render_cell(i, j, grid.cells[i][j].is_bounded())
 
         # Update the screen so that the changes take place
         pygame.display.update()
 
-    def __render_cell(self, i: int, j: int, alive: bool):
+    def __render_cell(self, i: int, j: int, bounded: bool):
         """Renders a cell at index i,j
 
         Its actual position depends on the resolution, which depends on the cell size
         So a cell of index (i,j) is rendered at (top corner) = (i*cell_size, j*cell_size)
         """
 
-        # Living cells are colored white, dead cells black
-        color = (255, 255, 255) if alive else (0, 0, 0)
+        color = (255, 255, 255) if not bounded else (0, 0, 0)
         size = self.__settings.cell_size
         rect = (i * size, j * size, size, size)
         pygame.draw.rect(self.__screen, color, rect)

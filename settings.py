@@ -8,12 +8,21 @@ from dataclasses import dataclass
 
 
 class Constants:
-    GAME_WIDTH = 200
-    GAME_HEIGHT = 150
-    CELL_SIZE = 4
-    INITIAL_FPS = 2
+    GAME_WIDTH = 800
+    GAME_HEIGHT = 600
+    CELL_SIZE = 1
+    INITIAL_FPS = 8
     MAX_FPS = 128
     MIN_FPS = 1
+
+    REAL_LEFT_BOUND = -2
+    REAL_RIGHT_BOUND = 1.5
+    IMAGINARY_UP_BOUND = 1.5
+    IMAGINARY_DOWN_BOUND = -1.5
+
+    MAGNITUDE_CEILING = 3
+
+    OVERFLOW_PROTECTION = 100   # We get overflow errors, so once magnitude goes beyond this we consier the cell lost
 
 
 @dataclass

@@ -1,1 +1,7 @@
+# pycache and runtime info
+__pycache__/*
+
+
+# macOS stuff
 .DS_Store
+
