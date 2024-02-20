@@ -1,5 +1,0 @@
-X Make the basic graphics work
-X Make the mouse draw thing work
-
-Lift state upwards into a GameState object, instead of passing references to a mutable Settings object
-Fix pygame throwing pygame.WINDOWCLOSE instead of pygame.QUIT
