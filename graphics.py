@@ -2,7 +2,7 @@
 
 import pygame
 
-from grid import Grid
+from grid import Grid, Cell
 from settings import Settings, Constants
 
 
@@ -24,19 +24,20 @@ class Graphics:
         self.__screen.fill((0, 0, 0))
         for i in range(grid.width):
             for j in range(grid.height):
-                self.__render_cell(i, j, grid.cells[i][j].is_bounded())
+                self.__render_cell(i, j, grid.cells[i][j])
 
         # Update the screen so that the changes take place
         pygame.display.update()
 
-    def __render_cell(self, i: int, j: int, bounded: bool):
+    def __render_cell(self, i: int, j: int, cell: Cell):
         """Renders a cell at index i,j
 
         Its actual position depends on the resolution, which depends on the cell size
         So a cell of index (i,j) is rendered at (top corner) = (i*cell_size, j*cell_size)
         """
 
-        color = (255, 255, 255) if not bounded else (0, 0, 0)
+        color_val = 255 - int((255 * cell.numiters / cell.generations))
+        color = (color_val, color_val, color_val)
         size = self.__settings.cell_size
         rect = (i * size, j * size, size, size)
         pygame.draw.rect(self.__screen, color, rect)

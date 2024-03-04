@@ -14,25 +14,26 @@ class Cell:
     zi: float   # imaginary part of Z
 
     lost: bool = False  # gone above the overflow protection boundary
+    numiters: int = 0
+    generations: int = 0
 
     def is_bounded(self):
         """
         Returns whether a cell is bounded or not, for displaying the set
         """
-        if self.lost:
-            return False
 
-        magnitude = sqrt(self.zr**2 + self.zi**2)
-        if (magnitude > Constants.OVERFLOW_PROTECTION):
-            self.lost = True
-            return False
-        return magnitude < Constants.MAGNITUDE_CEILING
+        return self.lost
+
 
     def step(self):
+        self.generations += 1
+        self.lost = sqrt(self.zr**2 + self.zi**2) > Constants.MAGNITUDE_CEILING
         if self.lost:
             return
 
+        self.numiters += 1
         self.zr, self.zi = z_squared_plus_c(self.zr, self.zi, self.cr, self.ci)
+
 
 
 class Grid:
