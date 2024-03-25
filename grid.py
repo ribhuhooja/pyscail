@@ -27,10 +27,10 @@ class Cell:
 
     def step(self):
         self.generations += 1
-        self.lost = sqrt(self.zr**2 + self.zi**2) > Constants.MAGNITUDE_CEILING
         if self.lost:
             return
 
+        self.lost = sqrt(self.zr**2 + self.zi**2) > Constants.MAGNITUDE_CEILING
         self.numiters += 1
         self.zr, self.zi = z_squared_plus_c(self.zr, self.zi, self.cr, self.ci)
 

@@ -36,7 +36,7 @@ class Graphics:
         So a cell of index (i,j) is rendered at (top corner) = (i*cell_size, j*cell_size)
         """
 
-        color_val = 255 - int((255 * cell.numiters / cell.generations))
+        color_val = 255 - int(255 * cell.numiters / cell.generations)
         color = (color_val, color_val, color_val)
         size = self.__settings.cell_size
         rect = (i * size, j * size, size, size)
