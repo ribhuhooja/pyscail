@@ -8,23 +8,30 @@ from dataclasses import dataclass
 
 
 class Constants:
-    GAME_WIDTH = 800
-    GAME_HEIGHT = 600
-    CELL_SIZE = 1
-    INITIAL_FPS = 8
-    MAX_FPS = 128
-    MIN_FPS = 1
+    GAME_WIDTH = 800  # Specified
+    GAME_HEIGHT = 600  # Specified
+    CELL_SIZE = 1  # optional
+    INITIAL_FPS = 8  # optional
+    MAX_FPS = 128  # optional
+    MIN_FPS = 1  # optional
 
-    REAL_LEFT_BOUND = -2
-    REAL_RIGHT_BOUND = 1.5
-    IMAGINARY_UP_BOUND = 1.5
-    IMAGINARY_DOWN_BOUND = -1.5
+    REAL_LEFT_BOUND = -2  # scail-specific
+    REAL_RIGHT_BOUND = 1.5  # scail-specific
+    IMAGINARY_UP_BOUND = 1.5  # scail-specific
+    IMAGINARY_DOWN_BOUND = -1.5  # scail-specific
 
-    MAGNITUDE_CEILING = 3
+    MAGNITUDE_CEILING = 3  # scail-specific
 
-    OVERFLOW_PROTECTION = 100   # We get overflow errors, so once magnitude goes beyond this we consier the cell lost
+    OVERFLOW_PROTECTION = 100  # scail-specific
 
 
+# Maybe the scail-specific constants can go in globals, or just a "Constants" class
+#
+# For the Settings class, the user can maybe define another settings class, and we can do a
+# hasattr analysis
+
+
+# None of these are scail-specific, so they will come from the "Settings constants"
 @dataclass
 class Settings:
     game_width: int

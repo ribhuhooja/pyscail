@@ -1,89 +1,47 @@
-"""Executes all the code and calls upon all other modules"""
+from dataclasses import dataclass
 
-import pygame
-
-from grid import Grid
-from graphics import Graphics
-from settings import Settings, Constants
+import pyscail as scail
+from settings import Constants
 
 
-def handle_inputs(settings: Settings, grid: Grid):
-    """Handles inputs
+@dataclass
+class State:
+    z: complex
+    c: complex
+    lost: bool
 
-    Returns a boolean that is assigned to gameExit and takes in a Settings object and a Grid object
-    that it mutates depending on the inputs
-    """
+    def next(self):
+        """z(n+1) = z(n)^2 + c"""
+        if self.lost:
+            return
 
-    # Handling window closing and key presses
-    for event in pygame.event.get():
-        # Quit event, when the window cross key is pressed
-        if event.type == pygame.QUIT:
-            # Sets gameExit to true, which ends the program
-            return True
-        elif event.type == pygame.WINDOWCLOSE:  # Alternate quit event
-            return True
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                if not settings.paused:
-                    # Faster FPS when paused for better drawing on the screen
-                    settings.current_fps = 120
-                    settings.paused = True
-                else:
-                    settings.current_fps = settings.unpaused_fps
-                    settings.paused = False
-            elif event.key == pygame.K_r:
-                grid.reset()
-            elif event.key == pygame.K_f:
-                if settings.unpaused_fps < Constants.MAX_FPS:
-                    settings.unpaused_fps *= 2
-                    # If unpaused, update the current fps
-                    # If paused then this will happen during the unpausing
-                    if not settings.paused:
-                        settings.current_fps = settings.unpaused_fps
-            elif event.key == pygame.K_s:
-                # Can't have an fps lower than 1
-                if settings.unpaused_fps > max(1, Constants.MIN_FPS):
-                    settings.unpaused_fps //= 2  # FPS must be an integer
-                    if not settings.paused:
-                        settings.current_fps = settings.unpaused_fps
+        self.lost = abs(self.z) > 2  # hardcoded for now
+        self.z = self.z**2 + self.c
 
-    return False
+    def display(self):
+        color_val = 255 if self.lost else 0
+        return (color_val, color_val, color_val)
 
 
-def mainLoop():
-    """Initializes all the classes and then updates them in a loop until the game is over"""
-    settings = Settings(
-        Constants.GAME_WIDTH,
-        Constants.GAME_HEIGHT,
-        Constants.CELL_SIZE,
-        Constants.INITIAL_FPS,
-        paused=False,
+def initialize(i, j, width, height):
+    cr = lerp(
+        Constants.REAL_LEFT_BOUND,
+        Constants.REAL_RIGHT_BOUND,
+        i / width,
     )
-    settings.current_fps = settings.unpaused_fps
 
-    grid = Grid(settings.game_width, settings.game_height)
-    clock = pygame.time.Clock()
-    graphics = Graphics(settings)
+    ci = lerp(
+        Constants.IMAGINARY_DOWN_BOUND,
+        Constants.IMAGINARY_UP_BOUND,
+        j / height,
+    )
 
-    gameExit = False
-    while not gameExit:
-        clock.tick(settings.current_fps)
-
-        if not settings.paused:
-            grid.step_grid()
-
-        graphics.render_grid(grid)
-
-        gameExit = handle_inputs(settings, grid)
+    return State(0, complex(cr, ci), False)
 
 
-def main():
-    """Executes all the code"""
-    pygame.init()
-    pygame.display.set_caption("Mandelbrot set")
-    mainLoop()
-    pygame.quit()
+def lerp(a, b, t):
+    return a + (b - a) * t
 
 
 if __name__ == "__main__":
-    main()
+    scail.run(initialize)

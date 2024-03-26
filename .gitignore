@@ -5,3 +5,5 @@ __pycache__/*
 # macOS stuff
 .DS_Store
 
+# TODO file
+TODO.txt

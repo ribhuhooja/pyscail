@@ -1,0 +1,20 @@
+import scail
+
+class Globals:
+  def init...
+  def update...
+
+class State:
+  def init...
+  def next...
+  def display...
+
+
+def initialize
+
+
+if __name__ == "__main__":
+  scail.run(State, initialize, Globals)
+
+TODO:
+Input handling? Settings? Constants?

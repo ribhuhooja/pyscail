@@ -1,0 +1,49 @@
+Using {
+  ntypes as default;
+  kernels as kr;
+  initializers as iz;
+}
+
+Globals {}
+updateGlobals() {}
+
+Struct State {
+  int x;
+  int y;
+  bool alive;
+}
+
+State nextState(State state) {
+  State result = new();
+  result.x = state.x;
+  result.y = state.y;
+
+  int aliveNeghbors;
+  foreach (nb in kr.neighbors(state.x, state.y, 1)) {
+    aliveNeghbors++;
+  }
+
+  if (aliveNeighbors == 3){
+    result.alive = true;
+  } else if (aliveNeighbors == 2){
+    result.alive = state.alive;
+  } else {
+    result.alive = false;
+  }
+
+  return result;
+}
+
+Color displayState(State state) {
+  if (state.alive) {
+    return white;
+  } else {
+    return black;
+  }
+}
+
+Void initialize(State state, iz.Cell cell) {
+  state.x = cell.x;
+  state.y = cell.y;
+  state.alive = iz.randomBool();
+}

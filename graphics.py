@@ -2,8 +2,7 @@
 
 import pygame
 
-from grid import Grid, Cell
-from settings import Settings, Constants
+from settings import Settings
 
 
 class Graphics:
@@ -19,7 +18,7 @@ class Graphics:
             (self.__resolution_width, self.__resolution_height)
         )
 
-    def render_grid(self, grid: Grid):
+    def render_grid(self, grid):
         """Draws the grid of cells onto the screen"""
         self.__screen.fill((0, 0, 0))
         for i in range(grid.width):
@@ -29,15 +28,14 @@ class Graphics:
         # Update the screen so that the changes take place
         pygame.display.update()
 
-    def __render_cell(self, i: int, j: int, cell: Cell):
+    def __render_cell(self, i: int, j: int, cell):
         """Renders a cell at index i,j
 
         Its actual position depends on the resolution, which depends on the cell size
         So a cell of index (i,j) is rendered at (top corner) = (i*cell_size, j*cell_size)
         """
 
-        color_val = 255 - int(255 * cell.numiters / cell.generations)
-        color = (color_val, color_val, color_val)
+        color = cell.display()
         size = self.__settings.cell_size
         rect = (i * size, j * size, size, size)
         pygame.draw.rect(self.__screen, color, rect)
