@@ -15,15 +15,6 @@ class Constants:
     MAX_FPS = 128  # optional
     MIN_FPS = 1  # optional
 
-    REAL_LEFT_BOUND = -2  # scail-specific
-    REAL_RIGHT_BOUND = 1.5  # scail-specific
-    IMAGINARY_UP_BOUND = 1.5  # scail-specific
-    IMAGINARY_DOWN_BOUND = -1.5  # scail-specific
-
-    MAGNITUDE_CEILING = 3  # scail-specific
-
-    OVERFLOW_PROTECTION = 100  # scail-specific
-
 
 # Maybe the scail-specific constants can go in globals, or just a "Constants" class
 #

@@ -1,7 +1,15 @@
 from dataclasses import dataclass
 
 import pyscail as scail
-from settings import Constants
+
+
+class Constants:
+    REAL_LEFT_BOUND = -2
+    REAL_RIGHT_BOUND = 1.5
+    IMAGINARY_UP_BOUND = 1.5
+    IMAGINARY_DOWN_BOUND = -1.5
+
+    MAGNITUDE_CEILING = 2
 
 
 @dataclass
@@ -15,7 +23,7 @@ class State:
         if self.lost:
             return
 
-        self.lost = abs(self.z) > 2  # hardcoded for now
+        self.lost = abs(self.z) > Constants.MAGNITUDE_CEILING
         self.z = self.z**2 + self.c
 
     def display(self):
