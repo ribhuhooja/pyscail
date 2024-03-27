@@ -11,23 +11,36 @@ class Constants:
 
     MAGNITUDE_CEILING = 2
 
+    JULIA_CENTER = complex(0, 0.8)
+
+
+class Globals:
+    num_generations: int = 1
+
+    @classmethod
+    def update(cls):
+        cls.num_generations += 1
+
 
 @dataclass
 class State:
     z: complex
-    c: complex
-    lost: bool
+    lost: bool = False
+    num_generation_alive: int = 0
 
     def next(self):
         """z(n+1) = z(n)^2 + c"""
         if self.lost:
             return
 
+        self.num_generation_alive += 1
         self.lost = abs(self.z) > Constants.MAGNITUDE_CEILING
-        self.z = self.z**2 + self.c
+        self.z = self.z**2 + Constants.JULIA_CENTER
 
     def display(self):
-        color_val = 255 if self.lost else 0
+        color_val = int(
+            lerp(255, 0, self.num_generation_alive / Globals.num_generations)
+        )
         return (color_val, color_val, color_val)
 
 
@@ -44,7 +57,7 @@ def initialize(i, j, width, height):
         j / height,
     )
 
-    return State(0, complex(cr, ci), False)
+    return State(complex(cr, ci))
 
 
 def lerp(a, b, t):
@@ -52,4 +65,4 @@ def lerp(a, b, t):
 
 
 if __name__ == "__main__":
-    scail.run(initialize)
+    scail.run(initialize, Globals.update)

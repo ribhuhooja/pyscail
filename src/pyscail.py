@@ -2,33 +2,15 @@ import pygame
 
 from settings import Settings, Constants
 from graphics import Graphics
+from grid import Grid
+import kernels
 
 
-class Grid:
-    def __init__(self, width, height, initialize):
-        self.width = width
-        self.height = height
-        self.initialize = initialize
-        self.cells = self.initial_cells()
-
-    def step_grid(self):
-        for i in range(self.width):
-            for j in range(self.height):
-                self.cells[i][j].next()
-
-    def reset(self):
-        self.cells = self.initial_cells()
-
-    def initial_cells(self):
-        cells = [
-            [self.initialize(i, j, self.width, self.height) for j in range(self.height)]
-            for i in range(self.width)
-        ]
-
-        return cells
+class Scail:
+    grid = None
 
 
-def mainLoop(initialize, update):
+def mainLoop(initialize, update, mutate: bool):
     """Initializes all the classes and then updates them in a loop until the game is over"""
     settings = Settings(
         Constants.GAME_WIDTH,
@@ -39,7 +21,8 @@ def mainLoop(initialize, update):
     )
     settings.current_fps = settings.unpaused_fps
 
-    grid = Grid(settings.game_width, settings.game_height, initialize)
+    grid = Grid(settings.game_width, settings.game_height, initialize, mutate)
+    Scail.grid = grid
     clock = pygame.time.Clock()
     graphics = Graphics(settings)
 
@@ -59,7 +42,7 @@ def mainLoop(initialize, update):
                 break
 
 
-def run(initialize, update):
+def run(initialize, update, mutate=True):
     """Runs the specified cellular automaton
 
     initialize - a function to initialize the grid,
@@ -69,5 +52,10 @@ def run(initialize, update):
     """
     pygame.init()
     pygame.display.set_caption("SCAIL")
-    mainLoop(initialize, update)
+    mainLoop(initialize, update, mutate)
     pygame.quit()
+
+
+def cells(indices):
+
+    return [Scail.grid.cells[i][j] for (i, j) in indices]
