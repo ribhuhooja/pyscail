@@ -1,10 +1,25 @@
 from dataclasses import dataclass
-import random
 
 import pyscail as scail
-from settings import Constants
+from settings import Settings
 
-ORIGINAL_POPULATION_DENSITY = 0.5
+
+class Constants:
+    SIMULATION_WIDTH = 200
+    SIMULATION_HEIGHT = 150
+    CELL_SIZE = 4
+    INITIAL_FPS = 8
+
+    R_PENTOMINO = [(100, 100), (100, 101), (100, 99), (99, 100), (101, 99)]
+
+
+settings = (
+    Settings.new()
+    .set_dimensions(
+        Constants.SIMULATION_WIDTH, Constants.SIMULATION_HEIGHT, Constants.CELL_SIZE
+    )
+    .set_initial_fps(Constants.INITIAL_FPS)
+)
 
 
 @dataclass
@@ -18,8 +33,8 @@ class Cell:
             scail.kernels.wrap_moore_neighborhood(
                 self.i,
                 self.j,
-                Constants.GAME_WIDTH,
-                Constants.GAME_HEIGHT,
+                Constants.SIMULATION_WIDTH,
+                Constants.SIMULATION_HEIGHT,
             )
         )
 
@@ -43,15 +58,11 @@ class Cell:
 
 
 def initialize(i, j, width, height):
-    init_list = [(100, 100), (100, 101), (100, 99), (99, 100), (101, 99)]
-    # alive = True if random.random() < ORIGINAL_POPULATION_DENSITY else False
+    # r-pentomino
+    init_list = Constants.R_PENTOMINO
     alive = True if (i, j) in init_list else False
     return Cell(i, j, alive)
 
 
-def lerp(a, b, t):
-    return a + (b - a) * t
-
-
 if __name__ == "__main__":
-    scail.run(initialize, lambda: None, mutate=False)
+    scail.run(initialize, lambda: None, settings)
