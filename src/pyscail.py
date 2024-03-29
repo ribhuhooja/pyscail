@@ -30,11 +30,10 @@ def mainLoop(initialize, update, mutate: bool):
     while not gameExit:
         clock.tick(settings.current_fps)
 
+        graphics.render_grid(grid)
         if not settings.paused:
             grid.step_grid()
             update()
-
-        graphics.render_grid(grid)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -50,6 +49,7 @@ def run(initialize, update, mutate=True):
 
     update - a function that is run every generation. No parameters
     """
+
     pygame.init()
     pygame.display.set_caption("SCAIL")
     mainLoop(initialize, update, mutate)
