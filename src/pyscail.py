@@ -34,7 +34,7 @@ def mainLoop(initialize, update, settings: Settings):
                 break
 
 
-def run(initialize, update, settings: Settings | None):
+def run(initialize, update, settings: Settings):
     """Runs the specified cellular automaton
 
     initialize - a function to initialize the grid,
@@ -42,9 +42,6 @@ def run(initialize, update, settings: Settings | None):
 
     update - a function that is run every generation. No parameters
     """
-
-    if settings is None:
-        settings = Settings.new()
 
     pygame.init()
     pygame.display.set_caption("SCAIL")
