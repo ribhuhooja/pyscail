@@ -39,7 +39,7 @@ class Settings:
     mutate: bool  # whether the autamaton does check-and-update or mutation
 
     @staticmethod
-    def new():
+    def default():
         return Settings(
             Defaults.GAME_WIDTH,
             Defaults.GAME_HEIGHT,
@@ -55,7 +55,9 @@ class Settings:
 
         The resolution will be (width * cell_size) x (height * cell_size)
         """
-        self.width, self.height, self.cell_size = width, height, cell_size
+        self.game_width = width
+        self.game_height = height
+        self.cell_size = cell_size
         return self
 
     def set_initial_fps(self, fps: int):
@@ -66,3 +68,11 @@ class Settings:
 
         self.current_fps = self.unpaused_fps = fps
         return self
+
+    def set_mutate(self, mutate: bool):
+        """Sets the mutate of the scail and returns the mutated object"""
+        self.mutate = mutate
+        return self
+
+    def __str__(self) -> str:
+        return f"Settings(width: {self.game_width}, height: {self.game_height}, cell_size = {self.cell_size}, ...)"

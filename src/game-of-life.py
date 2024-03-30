@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 
 import pyscail as scail
-from settings import Settings
 
 
 class Constants:
@@ -14,7 +13,7 @@ class Constants:
 
 
 settings = (
-    Settings.new()
+    scail.Settings.default()
     .set_dimensions(
         Constants.SIMULATION_WIDTH, Constants.SIMULATION_HEIGHT, Constants.CELL_SIZE
     )
