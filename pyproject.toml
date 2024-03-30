@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pyscail"
+version = "0.0.1"
+dependencies = ["pygame"]
+authors = [{ name = "Ribhu Hooja", email = "ribhu.hooja.27@dartmouth.edu" }]
+description = "A package that helps build cellular automata"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+keywords = ["cellular automata", "game of life"]
+
+[project.urls]
+Homepage = "https://github.com/ribhuhooja/pyscail"
+Issues = "https://github.com/ribhuhooja/pyscail/issues"
