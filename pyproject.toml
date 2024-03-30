@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pyscail"
-version = "0.0.4"
+version = "0.0.11"
 dependencies = ["pygame"]
 authors = [{ name = "Ribhu Hooja", email = "ribhu.hooja.27@dartmouth.edu" }]
 description = "A package that helps build cellular automata"

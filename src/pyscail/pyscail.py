@@ -1,9 +1,8 @@
 import pygame
 
-from settings import Settings
-from graphics import Graphics
-from grid import Grid
-import kernels
+from pyscail.settings import Settings
+from pyscail.graphics import Graphics
+from pyscail.grid import Grid
 
 
 class Scail:

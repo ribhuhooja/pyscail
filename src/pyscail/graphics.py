@@ -2,7 +2,7 @@
 
 import pygame
 
-from settings import Settings
+from pyscail.settings import Settings
 
 
 class Graphics:
