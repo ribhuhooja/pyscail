@@ -6,6 +6,7 @@ cache_kernels = False
 
 
 def initialize_kernel_caching(width: int, height: int):
+    global cache_kernels, saved_kernels
     cache_kernels = True
     saved_kernels = [None for _ in range(width * height)]
 
