@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 import pyscail as scail
+import pyscail.kernels as kernels
 
 
 class Constants:
@@ -29,7 +30,7 @@ class Cell:
 
     def next(self):
         neighbors = scail.cells(
-            scail.kernels.wrap_moore_neighborhood(
+            kernels.wrap_moore_neighborhood(
                 self.i,
                 self.j,
                 Constants.SIMULATION_WIDTH,
