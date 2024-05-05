@@ -45,3 +45,38 @@ def wrap_moore_neighborhood(i, j, width, height):
         saved_kernels[width * j + i] = result
 
     return result
+
+
+def wrap_von_neumann_neighborhood(i, j, width, height):
+    if cache_kernels:
+        to_return = saved_kernels[width * j + i]
+        if to_return is not None:
+            return to_return
+
+    result = []
+    result.append(((i + 1) % width, (j + 1) % height))
+    result.append(((i - 1) % width, (j + 1) % height))
+    result.append(((i + 1) % width, (j - 1) % height))
+    result.append(((i - 1) % width, (j - 1) % height))
+
+    if cache_kernels:
+        saved_kernels[width * j + i] = result
+
+    return result
+
+
+def nowrap_von_neumann_neighborhood(i, j, width, height):
+    if cache_kernels:
+        to_return = saved_kernels[width * j + i]
+        if to_return is not None:
+            return to_return
+
+    result = []
+    for x, y in [(i + 1, j + 1), (i - 1, j + 1), (i + 1, j - 1), (i - 1, j - 1)]:
+        if x >= 0 and x < width and y >= 0 and y < width:
+            result.append((x, y))
+
+    if cache_kernels:
+        saved_kernels[width * j + i] = result
+
+    return result
