@@ -41,6 +41,7 @@ library. Written demo automata include:
 - Conway's game of life
 - The modified game of life with extinction, in demo.py 
 - Langton's ant 
+
 ![Langton gif](media/langton-gif.gif)
 - Wireworld
 - Rock-Paper-Scissors automata 
@@ -49,6 +50,7 @@ library. Written demo automata include:
 
 And lastly, this demo of many of the above rulesets combined into one 
 ruleset and run all together, then displayed as a weighted average
+
 ![everything gif](media/everything-gif.gif)
 
 ## Other
