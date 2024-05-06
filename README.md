@@ -3,6 +3,8 @@
 **pyscail** is a package for creating cellular automata. It allows you to specify the
 allowed states, and the transitions between them, and does everything else for you
 
+![rock-paper-scissors gif](media/bz-gif.gif)
+
 ## Installation
 
 You need to have python (>= 3.11) installed on your system. Once you have that,
