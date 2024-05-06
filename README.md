@@ -44,7 +44,7 @@ library. Written demo automata include:
 
 ![Langton gif](media/langton-gif.gif)
 - Wireworld
-- Rock-Paper-Scissors automata 
+- Rock-Paper-Scissors automata (https://www.hermetic.ch/pca/bz.htm)
 - Belusov-Zhabotinsky reaction
 - the Mandelbrot and Julia sets
 - A simulation of grain growth in metals (https://www.sciencedirect.com/science/article/pii/1359646296000553)
