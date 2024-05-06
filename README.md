@@ -3,7 +3,7 @@
 **pyscail** is a package for creating cellular automata. It allows you to specify the
 allowed states, and the transitions between them, and does everything else for you
 
-![rock-paper-scissors gif](media/bz-gif.gif)
+![rock-paper-scissors gif](media/rps-gif.gif)
 
 ## Installation
 
@@ -28,6 +28,9 @@ Optionally, provide a function that will be called once each generation.
 
 Then, simply call `scail.run` to run the ruleset.
 
+
+![Belusov-Zhabotinsky gif](media/bz-gif.gif)
+
 ## Demos
 See the following video for a demonstration on how to write code using this
 library.
@@ -38,10 +41,15 @@ library. Written demo automata include:
 - Conway's game of life
 - The modified game of life with extinction, in demo.py 
 - Langton's ant 
+![Langton gif](media/langton-gif.gif)
 - Wireworld
 - Rock-Paper-Scissors automata 
 - Belusov-Zhabotinsky reaction
 - the Mandelbrot and Julia sets
+
+And lastly, this demo of many of the above rulesets combined into one 
+ruleset and run all together, then displayed as a weighted average
+![everything gif](media/everything-gif.gif)
 
 ## Other
 
