@@ -16,6 +16,8 @@ pip install pyscail
 
 (or `pip3`, depending on your system)
 
+The project's link on PyPI: https://pypi.org/project/pyscail/
+
 ## Usage
 See this video for a demonstration of how to use the library: 
 https://youtu.be/BjPNs30i2TQ
