@@ -39,7 +39,7 @@ See the demos folder for a lot more (and more varied) examples on how to use the
 library. Written demo automata include:
 
 - Conway's game of life
-- The modified game of life with extinction, in demo.py 
+- The modified game of life with extinction
 - Langton's ant 
 
 ![Langton gif](media/langton-gif.gif)
@@ -47,8 +47,8 @@ library. Written demo automata include:
 - Rock-Paper-Scissors automata 
 - Belusov-Zhabotinsky reaction
 - the Mandelbrot and Julia sets
-
-And lastly, this demo of many of the above rulesets combined into one 
+- A simulation of grain growth in metals (https://www.sciencedirect.com/science/article/pii/1359646296000553)
+- And lastly, this demo of many of the above rulesets combined into one 
 ruleset and run all together, then displayed as a weighted average
 
 ![everything gif](media/everything-gif.gif)
