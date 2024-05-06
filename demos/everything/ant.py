@@ -43,10 +43,10 @@ class Cell:
 
     def display(self):
         if (self.i, self.j) == (Ant.x, Ant.y):
-            return (255, 0, 0)
+            return Constants.COLORS[0]
 
         color_val = 255 if self.color == BW.WHITE else 0
-        return (color_val, color_val, color_val)
+        return Constants.COLORS[Constants.NUM_COLORS - 1]
 
 
 def initialize(i, j, width, height):

@@ -70,7 +70,7 @@ class Constants:
 
     K1 = 2
     K2 = 3
-    NUM_STATES = 200
+    NUM_STATES_BZ = 200
     G = 70
     NUM_COLORS = 8
     COLORS = [(255 - i, 128 - i // 2, i) for i in range(0, 256, int(256 / NUM_COLORS))]

@@ -13,7 +13,7 @@ from settings import settings
 
 
 NUM_MIXED = 7
-INTERPOLATION_GENERATIONS = 50
+INTERPOLATION_GENERATIONS = 1
 
 
 def color_add(color_1, color_2):

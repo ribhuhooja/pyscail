@@ -6,9 +6,6 @@ import pyscail as scail
 from settings import Constants
 
 
-print(Constants.COLORS)
-
-
 settings = (
     scail.Settings.default()
     .set_dimensions(
@@ -42,7 +39,7 @@ class Cell:
             ill = 0
             infected = 0
             for neighbor in neighbors:
-                if neighbor.state == Constants.NUM_STATES - 1:
+                if neighbor.state == Constants.NUM_STATES_BZ - 1:
                     ill += 1
                 elif neighbor.state != 0:
                     infected += 1
@@ -53,18 +50,18 @@ class Cell:
                 s = self.state + sum([neighbor.state for neighbor in neighbors])
                 next_state = floor(s / (1 + infected + ill)) + Constants.G
 
-        if next_state > Constants.NUM_STATES - 1:
-            next_state = Constants.NUM_STATES - 1
+        if next_state > Constants.NUM_STATES_BZ - 1:
+            next_state = Constants.NUM_STATES_BZ - 1
 
         return Cell(self.i, self.j, next_state)
 
     def display(self):
-        index = floor(Constants.NUM_COLORS * self.state / Constants.NUM_STATES)
+        index = floor(Constants.NUM_COLORS * self.state / Constants.NUM_STATES_BZ)
         return Constants.COLORS[index]
 
 
 def initialize(i, j, width, height):
-    state = floor(random.random() * Constants.NUM_STATES)
+    state = floor(random.random() * Constants.NUM_STATES_BZ)
     return Cell(i, j, state)
 
 

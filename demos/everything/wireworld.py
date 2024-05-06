@@ -112,9 +112,9 @@ class Cell:
     def display(self):
         match (self.state):
             case State.EMPTY:
-                return Colors.black
+                return Constants.COLORS[0]
             case State.CONDUCTOR:
-                return Colors.yellow
+                return Constants.COLORS[Constants.NUM_COLORS - 1]
             case State.ELECTRON_HEAD:
                 return Colors.blue
             case State.ELECTRON_TAIL:

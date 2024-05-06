@@ -64,11 +64,12 @@ class Cell:
     def display(self):
         match self.state:
             case State.ROCK:
-                return (0, 0, 128)
+                return Constants.COLORS[0]
             case State.PAPER:
-                return (0, 128, 0)
+                return Constants.COLORS[Constants.NUM_COLORS // 2]
+
             case State.SCISSORS:
-                return (128, 0, 0)
+                return Constants.COLORS[Constants.NUM_COLORS - 1]
 
 
 def initialize(i, j, width, height):

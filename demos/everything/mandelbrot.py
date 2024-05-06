@@ -63,8 +63,8 @@ class State:
 
     def display(self):
         if self.lost:
-            return Colors.mapping[self.num_generation_alive % 16]
-        return (0, 0, 0)
+            return Constants.COLORS[self.num_generation_alive % Constants.NUM_COLORS]
+        return Constants.COLORS[0]
 
 
 def initialize(i, j, width, height):

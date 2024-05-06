@@ -60,11 +60,15 @@ class Cell:
         return Cell(self.i, self.j, next_alive, self.extinction)
 
     def display(self):
-        color_val = 255 if self.alive else 0
+        color = (
+            Constants.COLORS[0]
+            if self.alive
+            else Constants.COLORS[Constants.NUM_COLORS - 1]
+        )
         # Just a visual indicator
         if self.extinction > 0:
             return (255, 0, 0)
-        return (color_val, color_val, color_val)
+        return color
 
 
 def initialize(i: int, j: int, width: int, height: int):

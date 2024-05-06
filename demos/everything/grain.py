@@ -58,10 +58,9 @@ class Cell:
         return Cell(self.i, self.j, next_state)
 
     def display(self):
-        red_val = math.floor(110 * self.state / Constants.NUM_STATES)
-        green_val = math.floor(128 * self.state / Constants.NUM_STATES)
-        blue_val = math.floor(128 * self.state / Constants.NUM_STATES)
-        return (red_val, green_val, blue_val)
+        return Constants.COLORS[
+            int(self.state * Constants.NUM_COLORS / Constants.NUM_STATES)
+        ]
 
 
 def initialize(i, j, width, height):
