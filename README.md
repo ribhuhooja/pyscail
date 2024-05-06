@@ -15,6 +15,16 @@ pip install pyscail
 (or `pip3`, depending on your system)
 
 ## Usage
+See this video for a demonstration of how to use the library: 
+https://youtu.be/BjPNs30i2TQ
+
+A brief summary - provide a class with a `next` method and a 
+`display` method. Provide a initialization function that returns
+an instance of your class given some coordinates. Provide a settings
+object that you can make using method provided by the library.
+Optionally, provide a function that will be called once each generation.
+
+Then, simply call `scail.run` to run the ruleset.
 
 ## Demos
 See the following video for a demonstration on how to write code using this
